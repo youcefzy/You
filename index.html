@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>SnapDownload MV</title>
+  <link rel="icon" href="icon.png" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+    }
+    .container {
+      background: rgba(0,0,0,0.3);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+    input {
+      padding: 10px;
+      width: 100%;
+      margin: 15px 0;
+      border-radius: 8px;
+      border: none;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 8px;
+      background: #fff;
+      color: #00bcd4;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #00bcd4;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="logo.png" width="80" alt="SnapDownload MV"/>
+    <h2>SnapDownload MV</h2>
+    <input id="urlInput" placeholder="Paste URL here"/>
+    <div>
+      <button onclick="download('video')">Download Video</button>
+      <button onclick="download('audio')">Download MP3</button>
+    </div>
+  </div>
+  <script>
+    function download(type) {
+      const url = document.getElementById('urlInput').value;
+      if (!url) return alert('Please enter a valid URL!');
+      window.open(`/download${type === 'audio' ? '/audio' : ''}?url=${encodeURIComponent(url)}`, '_blank');
+    }
+  </script>
+</body>
+</html>
